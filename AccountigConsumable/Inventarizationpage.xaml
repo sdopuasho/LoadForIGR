@@ -1,0 +1,60 @@
+﻿<Page x:Class="AccountigConsumable.Inventarizationpage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AccountigConsumable"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Inventarizationpage">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="UIThemes/ThemeSimple.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="120"/>
+        </Grid.ColumnDefinitions>
+        <DataGrid x:Name="DGridConsumable" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ФИО" Binding="{Binding Worker.FIO}" Width="auto"></DataGridTextColumn>
+                <DataGridTextColumn Header="Склад" Binding="{Binding Warehouse.NumberOfWarehouse}" Width="auto"></DataGridTextColumn>
+                <DataGridTextColumn Header="Контактный номер" Binding="{Binding Warehouse.ContactNumber}" Width="auto"></DataGridTextColumn>
+                <DataGridTemplateColumn Width="auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Подробнее" Name="BtnEdit" Click="BtnEdit_Click_1"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Width="auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Редактировать" Name="BtnEdit" Click="BtnEdit_Click_2"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Orientation="Vertical" Grid.Column="1">
+            <Border BorderThickness="0.8"  BorderBrush="Black">
+                <StackPanel Orientation="Vertical" Margin="5" >
+
+                    <Button Content="Заказы" Width="110" VerticalAlignment="Center" HorizontalContentAlignment="Center"  x:Name="BtnOrder" Click="BtnOrder_Click"/>
+                    <Button Content="Поставки" Width="110" VerticalAlignment="Center" HorizontalContentAlignment="Center"  x:Name="BtnSupplWarehouse" Click="BtnSupplWarehouse_Click"/>
+                    <Button Content="Инвентаризация" Width="110" VerticalAlignment="Center" HorizontalContentAlignment="Center"  x:Name="BtnInventarization" Click="BtnInventarization_Click"/>
+                </StackPanel>
+            </Border>
+            <Border BorderThickness="0.8"  BorderBrush="Black">
+                <StackPanel Orientation="Vertical" Grid.Column="1">
+                    <Button Content="Добавить" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" Width="120"  Name="BtnAdd" Click="BtnAdd_Click"></Button>
+                    <Button Content="Удалить" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" Width="120" Name="BtnDel" Click="BtnDel_Click"></Button>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </Grid>
+</Page>
